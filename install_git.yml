@@ -1,0 +1,15 @@
+---
+  - hosts: all
+    become: true
+    tasks:
+      - name: Installing Git
+        yum:
+          name: git
+          state: latest
+        tags: install
+      - name: Installing Git
+        yum:
+          name: git
+          state: absent
+        tags: uninstall
+

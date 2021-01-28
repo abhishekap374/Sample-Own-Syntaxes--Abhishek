@@ -1,0 +1,17 @@
+---
+  - hosts: all
+    become: true
+    tasks:
+      - name: Install Maven
+        get_url:
+          url: https://mirrors.estointernet.in/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+          dest: /usr/local
+      - name: Untar Maven
+        unarchive:
+          src: /usr/local/apache-maven-3.6.3-bin.tar.gz
+          dest: /usr/local
+          remote_src: yes
+      - name: Install Maven
+        yum:
+          name: maven
+          state: latest
